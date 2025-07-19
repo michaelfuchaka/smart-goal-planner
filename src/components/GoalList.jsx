@@ -1,6 +1,6 @@
 import GoalCard from "./GoalCard";
 
-function GoalList({ goals, onDeleteGoal }) {
+function GoalList({ goals, onDeleteGoal , onUpdateGoal}) {
   return (
     <div>
       <h2>Your Goals</h2>
@@ -15,8 +15,9 @@ function GoalList({ goals, onDeleteGoal }) {
             <li key={goal.id}>
              <GoalCard 
                 key={goal.id} 
-             goal={goal} 
-               onDeleteGoal={onDeleteGoal}
+                goal={goal} 
+                onDeleteGoal={onDeleteGoal}
+                 onUpdateGoal={onUpdateGoal}
                       />
 
             </li>
