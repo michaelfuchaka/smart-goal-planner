@@ -95,6 +95,12 @@
       "title": "America",
       "description": "Trip to Us",
       "category": "Travel"
+    },
+    {
+      "id": "dec2",
+      "title": "Summer",
+      "description": "Travelling to Jamaica",
+      "category": "Travel"
     }
   ]
 }

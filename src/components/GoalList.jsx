@@ -1,3 +1,4 @@
+import GoalCard from "./GoalCard";
 
 function GoalList({ goals, onDeleteGoal }) {
   return (
@@ -12,17 +13,12 @@ function GoalList({ goals, onDeleteGoal }) {
             {/* Looping through the array to show each goal */}
           {goals.map((goal) => (    
             <li key={goal.id}>
-              <h3>{goal.title}</h3>
-              <p>{goal.description}</p>
-              <small>Category: {goal.category}</small>
-              <br />
+             <GoalCard 
+                key={goal.id} 
+             goal={goal} 
+               onDeleteGoal={onDeleteGoal}
+                      />
 
-              {/* optional delete */}
-              {onDeleteGoal && (
-                <button onClick={() => onDeleteGoal(goal.id)}>
-                  Delete
-                </button>
-              )}
             </li>
           ))}
         </ul>
