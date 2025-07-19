@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import GoalForm from "./components/GoalForm";
 import GoalList from "./components/GoalList";
-import DepositForm from "./components/DepositForm";
+
 import "./App.css";
 
 function App() {
@@ -73,8 +73,7 @@ const completedGoals = goals.filter(goal => goal.savedAmount >= goal.targetAmoun
     <GoalForm 
       onAddGoal={handleAddGoal} /> 
 
-      <DepositForm goals={goals} onUpdateGoal={handleUpdateGoal} />
-
+     
       {/* Render the goal list */}
       <GoalList goals={goals}
       onDeleteGoal={handleDeleteGoal}
