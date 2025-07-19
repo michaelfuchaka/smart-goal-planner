@@ -3,6 +3,13 @@ import React, { useState } from "react";
 function GoalCard({ goal, onDeleteGoal ,  onUpdateGoal }) {
   const { id, name, targetAmount, savedAmount, category, deadline  } = goal;
   const [depositAmount, setDepositAmount] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [editData, setEditData] = useState({
+  name: name,
+  targetAmount: targetAmount,
+  category: category,
+  deadline: deadline
+});
 
   // Calculate progress percentage
   const progressPercentage = (savedAmount / targetAmount) * 100;
@@ -21,6 +28,23 @@ function GoalCard({ goal, onDeleteGoal ,  onUpdateGoal }) {
       setDepositAmount("");
     }
   }
+  // Add edit handlers
+function handleEditSubmit(e) {
+  e.preventDefault();
+  const updatedGoal = {
+    ...goal,
+    ...editData,
+    targetAmount: parseFloat(editData.targetAmount)
+  };
+  onUpdateGoal(updatedGoal);
+  setIsEditing(false);
+}
+
+function handleEditChange(e) {
+  const { name, value } = e.target;
+  setEditData({ ...editData, [name]: value });
+}
+
 
   // Check deadline warnings
   const today = new Date();
@@ -28,6 +52,9 @@ function GoalCard({ goal, onDeleteGoal ,  onUpdateGoal }) {
   const daysUntilDeadline = Math.ceil((deadlineDate - today) / (1000 * 60 * 60 * 24));
   const isNearDeadline = daysUntilDeadline <= 30 && savedAmount < targetAmount;
   const isOverdue = daysUntilDeadline < 0 && savedAmount < targetAmount;
+// Calculate time remaining
+const timeRemaining = daysUntilDeadline > 0 ? `${daysUntilDeadline} days left` : 'Deadline passed';
+
 
   return (
     <div className="goal-card" style={cardStyle}>
@@ -37,7 +64,8 @@ function GoalCard({ goal, onDeleteGoal ,  onUpdateGoal }) {
       <p><strong>Saved Amount:</strong> ${savedAmount}</p>
       <p><strong>Remaining:</strong> ${remainingAmount}</p>
       <p><strong>Deadline:</strong> {deadline}</p>
-      
+      <p><strong>Time Remaining:</strong> {timeRemaining}</p>
+
       {/* Progress Bar */}
       <div style={progressBarContainer}>
         <div style={{...progressBar, width: `${progressPercentage}%`}}></div>
@@ -47,6 +75,50 @@ function GoalCard({ goal, onDeleteGoal ,  onUpdateGoal }) {
       {/* Deadline Warnings */}
       {isOverdue && <p style={{color: 'red'}}><strong>OVERDUE</strong></p>}
       {isNearDeadline && !isOverdue && <p style={{color: 'orange'}}><strong>WARNING: Deadline within 30 days!</strong></p>}
+        {savedAmount >= targetAmount && <p style={{color: 'green'}}><strong>COMPLETED! </strong></p>}
+
+         {/* Edit Button and Form */}
+      {!isEditing ? (
+        <button onClick={() => setIsEditing(true)}>Edit Goal</button>
+      ) : (
+        <form onSubmit={handleEditSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Goal name"
+            value={editData.name}
+            onChange={handleEditChange}
+            required
+          />
+          <input
+            type="number"
+            name="targetAmount"
+            placeholder="Target amount"
+            value={editData.targetAmount}
+            onChange={handleEditChange}
+            min="0"
+            step="0.01"
+            required
+          />
+          <input
+            type="text"
+            name="category"
+            placeholder="Category"
+            value={editData.category}
+            onChange={handleEditChange}
+            required
+          />
+          <input
+            type="date"
+            name="deadline"
+            value={editData.deadline}
+            onChange={handleEditChange}
+            required
+          />
+          <button type="submit">Save Changes</button>
+          <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
+        </form>
+      )}
 
       {/* Deposit Form */}
       <form onSubmit={handleDeposit}>
