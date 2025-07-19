@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Main state to hold all goals
+
+  const [goals, setGoals] = useState([]);
+  
+
+
+  // Fetch all goals from json-server
+  useEffect(() => {
+    fetch('http://localhost:3000/goals')
+      .then((res) => res.json())
+      .then((data) => setGoals(data))
+      .catch(error => console.log(error))
+  }, [])
+
+
+  // Add goal
+ const handleAddGoal = (newGoal) => {
+  setGoals([...goals, newGoal]);
+ };
+
+//  Delete goal
+const handleDeleteGoal = (id) =>{
+  setGoals(goals.filter(goal => goal.id !==id));
+ };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      <h1>Smart Goal Planner</h1>
+      <p>Total Goals: {goals.length}</p>
+      {/* <GoalForm 
+      onAddGoal={handleAddGoal} />
+      <GoalList goals={goals}
+      onDeleteGoal={handleDeleteGoal} /> */}
+    </div>
   )
 }
 
-export default App
+
+
+
+export default App;
+  
