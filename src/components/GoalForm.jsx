@@ -3,9 +3,11 @@ import { useState } from "react";
 // Holding values of input as one object
 function GoalForm({ onAddGoal }) {
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
+    name: "",
+    targetAmount: "",
     category: "",
+    deadline: "",
+
   });
 
 
@@ -18,16 +20,25 @@ function GoalForm({ onAddGoal }) {
   function handleSubmit(e) {
     e.preventDefault(); 
 
+
+    // Prepare data with required fields
+    const goalData = {
+      ...formData,
+      targetAmount: parseFloat(formData.targetAmount),
+      savedAmount: 0, // Start with 0 saved
+      createdAt: new Date().toISOString().split('T')[0] // Today's date
+    };
+
     // Send to server
     fetch("http://localhost:3000/goals", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(goalData),
     })
       .then(res => res.json())
       .then((newGoal) => {
         onAddGoal(newGoal); // send to App state
-        setFormData({ title: "", description: "", category: "" }); // clear form
+        setFormData({  name: "", targetAmount: "", category: "", deadline: ""  }); // clear form
       });
   }
 
@@ -37,19 +48,21 @@ function GoalForm({ onAddGoal }) {
       
       <input
         type="text"
-        name="title"
-        placeholder="Goal Title"
-        value={formData.title}
+        name="name"
+        placeholder="Goal Name"
+        value={formData.name}
         onChange={handleChange}
         required
       />
 
       <input
-        type="text"
-        name="description"
-        placeholder="Description"
-        value={formData.description}
+        type="number"
+        name="targetAmount"
+        placeholder="Target Amount"
+        value={formData.targetAmount}
         onChange={handleChange}
+        min="0"
+        step="0.01"
         required
       />
 
@@ -58,6 +71,14 @@ function GoalForm({ onAddGoal }) {
         name="category"
         placeholder="Category"
         value={formData.category}
+        onChange={handleChange}
+        required
+      />
+
+      <input
+        type="date"
+        name="deadline"
+        value={formData.deadline}
         onChange={handleChange}
         required
       />
