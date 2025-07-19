@@ -26,15 +26,48 @@ function App() {
 
 //  Delete goal
 const handleDeleteGoal = (id) =>{
-  setGoals(goals.filter(goal => goal.id !==id));
- };
+
+ // Delete from server
+  fetch(`http://localhost:3000/goals/${id}`, {
+    method: "DELETE"
+  })
+    .then(() => {
+      // Update local state
+      setGoals(goals.filter(goal => goal.id !== id));
+    })
+    .catch(error => console.log(error));
+};
+
+    // Update goal (for deposits)
+const handleUpdateGoal = (updatedGoal) => {
+  // Update on server
+  fetch(`http://localhost:3000/goals/${updatedGoal.id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(updatedGoal),
+  })
+    .then(res => res.json())
+    .then(() => {
+      // Update local state
+      setGoals(goals.map(goal => 
+        goal.id === updatedGoal.id ? updatedGoal : goal
+      ));
+    })
+    .catch(error => console.log(error));
+};
+
+   // Calculate overview stats
+const totalSaved = goals.reduce((sum, goal) => sum + goal.savedAmount, 0);
+const completedGoals = goals.filter(goal => goal.savedAmount >= goal.targetAmount);
 
   return (
     <div className="App">
-      <h1>Smart Goal Planner</h1>
-      <p>Total Goals: {goals.length}</p>
-
-      
+<h1>Smart Goal Planner</h1>
+  <div className="overview">
+    <p>Total Goals: {goals.length}</p>
+    <p>Total Money Saved: ${totalSaved}</p>
+    <p>Goals Completed: {completedGoals.length}</p>
+  </div>
       {/* Render the form */}
     <GoalForm 
       onAddGoal={handleAddGoal} /> 
@@ -42,7 +75,9 @@ const handleDeleteGoal = (id) =>{
       
       {/* Render the goal list */}
       <GoalList goals={goals}
-      onDeleteGoal={handleDeleteGoal} />  
+      onDeleteGoal={handleDeleteGoal}
+      onUpdateGoal={handleUpdateGoal} 
+        />  
     </div>
   )
 }
