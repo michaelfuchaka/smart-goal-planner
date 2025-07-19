@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import GoalForm from "./components/GoalForm";
 import "./App.css";
 
 function App() {
@@ -31,10 +32,10 @@ const handleDeleteGoal = (id) =>{
     <div className="App">
       <h1>Smart Goal Planner</h1>
       <p>Total Goals: {goals.length}</p>
-      {/* <GoalForm 
-      onAddGoal={handleAddGoal} />
-      <GoalList goals={goals}
-      onDeleteGoal={handleDeleteGoal} /> */}
+    <GoalForm 
+      onAddGoal={handleAddGoal} /> 
+      {/* <GoalList goals={goals}
+      onDeleteGoal={handleDeleteGoal} />  */}
     </div>
   )
 }
