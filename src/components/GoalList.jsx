@@ -11,8 +11,8 @@ function GoalList({ goals, onDeleteGoal , onUpdateGoal}) {
       ) : (
         <ul className="goals-grid" >
             
-            {/* Looping through the array to show each goal */}
-          {goals.map((goal) => (    
+            {/* Looping through the array to display 4 goals */}
+         {goals.slice(0, 4).map((goal) => (
             <li key={goal.id}>
              <GoalCard 
                 key={goal.id} 

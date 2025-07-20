@@ -11,8 +11,22 @@
   font-size: 16px;
 }
 
+
+.goal-form-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.goal-form input {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
 .goal-form button {
-  background: #1e3a8a;
+  background: #4a90e2;
+  font-weight: 600;
+  text-transform: none;
   color: white;
   cursor: pointer;
 }

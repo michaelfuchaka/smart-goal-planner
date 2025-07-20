@@ -3,6 +3,7 @@
   grid-template-areas: 
     "header header"
     "sidebar main";
+    grid-template-columns: 320px 1fr;
 }
 
 .app-header {
@@ -35,14 +36,14 @@
 }
 
 .sidebar {
-  background: #f8fafc;
+  background: #4a90e2 ;
   padding: 24px;
   border-radius: 12px;
   border: 1px solid #e2e8f0;
 }
 
 .main-content {
-  background: white;
+  background: #f8fafc ;
   padding: 24px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);

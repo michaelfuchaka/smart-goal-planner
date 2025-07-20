@@ -60,9 +60,6 @@ const handleUpdateGoal = (updatedGoal) => {
     .catch(error => console.log(error));
 };
 
-   // Calculate overview stats
-const totalSaved = goals.reduce((sum, goal) => sum + goal.savedAmount, 0);
-const completedGoals = goals.filter(goal => goal.savedAmount >= goal.targetAmount);
 
   return (
     <div className="App main-layout" > 

@@ -1,11 +1,6 @@
 .goals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;}
 
 .goals-grid li {
   margin: 0;

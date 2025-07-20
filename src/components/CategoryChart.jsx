@@ -60,9 +60,9 @@ function CategoryChart({ goals = [] }) {
           datasets: [{
             data: categoryArray.map(cat => cat.totalSaved),
             backgroundColor: [
-              '#4CAF50', '#2196F3', '#FF9800', '#9C27B0', 
-              '#F44336', '#00BCD4', '#795548', '#607D8B',
-              '#E91E63', '#3F51B5', '#FF5722', '#009688'
+            '#10b981', '#4a90e2', '#f59e0b', '#8b5cf6', 
+            '#ef4444', '#06b6d4', '#84cc16', '#f97316'
+
             ],
             borderWidth: 2,
             borderColor: '#fff'
@@ -146,13 +146,6 @@ function CategoryChart({ goals = [] }) {
 }
 
 
-function getCategoryColor(index) {
-  const colors = [
-    '#4CAF50', '#2196F3', '#FF9800', '#9C27B0', 
-    '#F44336', '#00BCD4', '#795548', '#607D8B',
-    '#E91E63', '#3F51B5', '#FF5722', '#009688'
-  ];
-  return colors[index % colors.length];
-}
+
 
 export default CategoryChart;
