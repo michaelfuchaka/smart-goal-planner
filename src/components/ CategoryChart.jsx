@@ -99,40 +99,40 @@ function CategoryChart({ goals = [] }) {
 
   if (categoryArray.length === 0) {
     return (
-      <div style={chartContainer}>
+      <div >
         <h2> Savings by Category</h2>
-        <p style={emptyState}>No goals to display. Add some goals to see category breakdown!</p>
+        <p >No goals to display. Add some goals to see category breakdown!</p>
       </div>
     );
   }
 
   return (
-    <div style={chartContainer}>
+    <div >
       <h2>Savings by Category</h2>
       
       {/* Chart.js Canvas */}
-      <div style={chartWrapper}>
+      <div >
         <canvas ref={chartRef} width="400" height="300"></canvas>
       </div>
 
       {/* Category Summary Cards */}
-      <div style={summaryCards}>
-        <div style={summaryCard}>
+      <div >
+        <div >
           <h4> Total Categories</h4>
-          <p style={summaryNumber}>{categoryArray.length}</p>
+          <p >{categoryArray.length}</p>
         </div>
-        <div style={summaryCard}>
+        <div >
           <h4>Best Performing</h4>
-          <p style={summaryText}>{categoryArray[0]?.category || 'None'}</p>
-          <p style={summarySubtext}>${categoryArray[0]?.totalSaved.toFixed(2) || '0.00'} saved</p>
+          <p >{categoryArray[0]?.category || 'None'}</p>
+          <p >${categoryArray[0]?.totalSaved.toFixed(2) || '0.00'} saved</p>
         </div>
-        <div style={summaryCard}>
+        <div >
           <h4> Highest Completion</h4>
-          <p style={summaryText}>
+          <p >
             {categoryArray.reduce((best, current) => 
               current.completionRate > (best?.completionRate || 0) ? current : best, null)?.category || 'None'}
           </p>
-          <p style={summarySubtext}>
+          <p >
             {categoryArray.reduce((best, current) => 
               current.completionRate > (best?.completionRate || 0) ? current : best, null)?.completionRate.toFixed(1) || '0'}% complete
           </p>
@@ -140,70 +140,12 @@ function CategoryChart({ goals = [] }) {
       </div>
 
       
-      
+      mn
     </div>
   );
 }
 
-// Styles
-const chartContainer = {
-  padding: '1.5rem',
-  backgroundColor: '#ffffff',
-  borderRadius: '12px',
-  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-  marginBottom: '2rem',
-};
 
-const emptyState = {
-  textAlign: 'center',
-  color: '#6c757d',
-  fontSize: '1.1rem',
-  padding: '2rem',
-};
-
-const chartWrapper = {
-  width: '100%',
-  maxWidth: '500px',
-  margin: '2rem auto',
-  padding: '1rem',
-  backgroundColor: '#f8f9fa',
-  borderRadius: '8px',
-};
-
-const summaryCards = {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-  gap: '1rem',
-  marginBottom: '2rem',
-};
-
-const summaryCard = {
-  backgroundColor: '#f8f9fa',
-  padding: '1rem',
-  borderRadius: '8px',
-  textAlign: 'center',
-  border: '1px solid #e9ecef',
-};
-
-const summaryNumber = {
-  fontSize: '1.8rem',
-  fontWeight: 'bold',
-  color: '#2c3e50',
-  margin: '0.5rem 0',
-};
-
-const summaryText = {
-  fontSize: '1.1rem',
-  fontWeight: 'bold',
-  color: '#2c3e50',
-  margin: '0.5rem 0',
-};
-
-const summarySubtext = {
-  fontSize: '0.9rem',
-  color: '#6c757d',
-  margin: 0,
-};
 function getCategoryColor(index) {
   const colors = [
     '#4CAF50', '#2196F3', '#FF9800', '#9C27B0', 
