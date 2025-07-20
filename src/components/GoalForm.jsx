@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./GoalForm.css"
 
 // Holding values of input as one object
 function GoalForm({ onAddGoal }) {
@@ -43,7 +44,8 @@ function GoalForm({ onAddGoal }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="goal-form-container">
+    <form onSubmit={handleSubmit} className="goal-form" >
       <h2>Add a New Goal</h2>
       
       <input
@@ -85,6 +87,7 @@ function GoalForm({ onAddGoal }) {
 
       <button type="submit">Add Goal</button>
     </form>
+    </div>
   );
 }
 

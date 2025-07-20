@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
+import "./CategoryChart.css";
 
 
 function CategoryChart({ goals = [] }) {
@@ -111,7 +112,7 @@ function CategoryChart({ goals = [] }) {
       <h2>Savings by Category</h2>
       
       {/* Chart.js Canvas */}
-      <div >
+      <div  className="chart-container" >
         <canvas ref={chartRef} width="400" height="300"></canvas>
       </div>
 
@@ -139,8 +140,7 @@ function CategoryChart({ goals = [] }) {
         </div>
       </div>
 
-      
-      mn
+    
     </div>
   );
 }

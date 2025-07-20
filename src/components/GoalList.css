@@ -1,0 +1,19 @@
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.goals-grid li {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .goals-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

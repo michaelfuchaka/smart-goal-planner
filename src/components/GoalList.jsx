@@ -1,4 +1,5 @@
 import GoalCard from "./GoalCard";
+import "./GoalList.css";
 
 function GoalList({ goals, onDeleteGoal , onUpdateGoal}) {
   return (
@@ -8,7 +9,7 @@ function GoalList({ goals, onDeleteGoal , onUpdateGoal}) {
       {goals.length === 0 ? (
         <p>No goals yet. Start by adding one!</p>
       ) : (
-        <ul>
+        <ul className="goals-grid" >
             
             {/* Looping through the array to show each goal */}
           {goals.map((goal) => (    

@@ -139,11 +139,12 @@ const timeRemaining = daysUntilDeadline > 0 ? `${daysUntilDeadline} days left` :
 }
 
 const cardStyle = {
-  border: "1px solid #ccc",
-  borderRadius: "10px",
-  padding: "1rem",
-  marginBottom: "1rem",
-  backgroundColor: "#f9f9f9",
+  background: "white",
+  border: "1px solid #e2e8f0",
+  borderRadius: "12px",
+  padding: "24px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+  transition: "transform 0.2s ease, box-shadow 0.2s ease",
 };
 
 const progressBarContainer = {

@@ -38,7 +38,7 @@ function OverviewDashboard({ goals = [] }) {
       <h2>📊 Financial Overview</h2>
       
       {/* Main Statistics Cards */}
-      <div >
+      <div  className="stats-grid" >
         <div >
           <h3> Total Goals</h3>
           <p >{totalGoals}</p>
