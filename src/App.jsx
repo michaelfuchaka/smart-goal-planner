@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import GoalForm from "./components/GoalForm";
 import GoalList from "./components/GoalList";
+import OverviewDashboard from "./components/ OverviewDashboard";
+// import CategoryChart from "./components/CategoryChart";
 
 import "./App.css";
 
@@ -64,11 +66,14 @@ const completedGoals = goals.filter(goal => goal.savedAmount >= goal.targetAmoun
   return (
     <div className="App">
 <h1>Smart Goal Planner</h1>
-  <div className="overview">
+  {/* <div className="overview">
     <p>Total Goals: {goals.length}</p>
     <p>Total Money Saved: ${totalSaved}</p>
     <p>Goals Completed: {completedGoals.length}</p>
-  </div>
+  </div> */}
+   <OverviewDashboard goals={goals} />
+
+
       {/* Render the form */}
     <GoalForm 
       onAddGoal={handleAddGoal} /> 
