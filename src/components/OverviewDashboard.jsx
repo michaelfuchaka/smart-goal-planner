@@ -46,52 +46,41 @@ function OverviewDashboard({ goals = [] }) {
   });
 
   return (
-    <div>
-      <h2>📊 Financial Overview</h2>
+     <div className="overview-dashboard">
+    <h2>📊 Financial Overview</h2>
 
-      {/* Main Statistics Cards */}
-      <div className="stats-grid">
-        <div>
-          <h3> Total Goals</h3>
-          <p>{totalGoals}</p>
-        </div>
+    {/* Main Statistics Cards */}
+    <div className="stats-grid">
+      <div className="stat-card">
+        <h3>Total Goals</h3>
+        <p className="stat-number">{totalGoals}</p>
+      </div>
 
-        <div>
-          <h3> Total Saved</h3>
-          <p>${totalSaved.toFixed(2)}</p>
-        </div>
+      <div className="stat-card">
+        <h3>Total Saved</h3>
+        <p className="stat-number">${totalSaved.toFixed(2)}</p>
+      </div>
 
-        <div>
-          <h3> Completed</h3>
-          <p>{completedCount}</p>
-          <p>
-            (
-            {totalGoals > 0
-              ? ((completedCount / totalGoals) * 100).toFixed(1)
-              : 0}
-            %)
-          </p>
-        </div>
+      <div className="stat-card">
+        <h3>Completed</h3>
+        <p className="stat-number">{completedCount}</p>
+        <p className="stat-percentage">
+          ({totalGoals > 0 ? ((completedCount / totalGoals) * 100).toFixed(1) : 0}%)
+        </p>
+      </div>
 
-        <div>
-          <h3> Overall Progress</h3>
-          <p>{overallProgress.toFixed(1)}%</p>
-          <div>
-            <div
-              className="progress-bar"
-              style={{ width: `${overallProgress}%` }}
-            ></div>
-          </div>
-        </div>
-        {/* Category Breakdown Cards */}
-        <div className="category-section">
-          <h3>Category Breakdown</h3>
-          <div className="category-cards">
-            {/* Category cards will go here */}
-          </div>
+      <div className="stat-card">
+        <h3>Overall Progress</h3>
+        <p className="stat-number">{overallProgress.toFixed(1)}%</p>
+        <div className="progress-container">
+          <div
+            className="progress-bar"
+            style={{ width: `${overallProgress}%` }}
+          ></div>
         </div>
       </div>
     </div>
+  </div>
   );
 }
 

@@ -4,18 +4,19 @@
   gap: 16px;
 }
 
-.goal-form input, .goal-form button {
+.goal-form input,
+.goal-form button {
   padding: 12px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
   font-size: 16px;
 }
 
-
 .goal-form-container {
   background: white;
   border-radius: 12px;
   padding: 24px;
+  margin-top: 20px;
 }
 
 .goal-form input {
@@ -29,4 +30,27 @@
   text-transform: none;
   color: white;
   cursor: pointer;
+}
+
+.goal-form-container h2 {
+  color: white;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.goal-form button:hover {
+  background: #357abd;
+  transform: translateY(-1px);
+}
+/* Add a sidebar header */
+.sidebar-header {
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
 }
