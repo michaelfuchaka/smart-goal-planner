@@ -80,15 +80,6 @@
       "category": "Home",
       "deadline": "2025-03-31",
       "createdAt": "2024-05-15"
-    },
-    {
-      "id": "bcbc",
-      "name": "Travel",
-      "targetAmount": 4000,
-      "category": "Travel",
-      "deadline": "2025-07-20",
-      "savedAmount": 3000,
-      "createdAt": "2025-07-20"
     }
   ]
 }

@@ -1,7 +1,7 @@
 .main-layout {
   display: grid;
   grid-template-areas:
-    "header header"
+   
     "sidebar main";
   grid-template-columns: 320px 1fr;
   display: flex;
@@ -10,10 +10,8 @@
 }
 
 .main-content {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+ 
+
 }
 
 @media (max-width: 1199px) {
@@ -51,9 +49,13 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
    flex: 1;
-  margin-left: 320px;
+  margin-left: 360px;
   max-height: 100vh;
   overflow-y: auto;
+   grid-area: main;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 @media (max-width: 767px) {
@@ -69,28 +71,6 @@
   }
 }
 
-.app-header {
-  
-  
-  grid-area: header;
-  background: white;
-  padding: 20px 24px;
-  margin: -24px -24px 24px -24px;
-  border-bottom: 1px solid #e2e8f0;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  margin-left: 0;
-}
-
-.app-header h1 {
-  
-   margin: 0;
-  color: #1a202c;
-  font-size: 28px;
-  font-weight: 700;
-  text-align: center
-}
 
 /* Add padding back to content sections */
 .overview-dashboard,
@@ -98,6 +78,6 @@
 .category-section {
   padding: 0 24px;
 }
-overview-dashboard {
+.overview-dashboard {
   padding-top: 24px; /* Add top padding to first section */
 }

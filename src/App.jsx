@@ -57,9 +57,6 @@ function App() {
 
   return (
     <div className="App main-layout">
-      <header className="app-header">
-        <h1>Smart Goal Planner</h1>
-      </header>
 
       <section className="main-content">
         <OverviewDashboard goals={goals} />
