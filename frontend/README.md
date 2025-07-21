@@ -5,7 +5,7 @@ A comprehensive savings goal tracking application built with React and Vite. Tra
 
 ## 🚀 Live Demo
 
-Check out the deployed app here: [Smart Goal Planner Live](https://your-deployment-link.com)
+Check out the deployed app here: [Smart Goal Planner Live](https://michaelfuchaka.github.io/smart-goal-planner/)
 
 
 

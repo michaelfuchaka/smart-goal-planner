@@ -13,7 +13,7 @@ function App() {
 
   // Fetch all goals from json-server
   useEffect(() => {
-    fetch("http://localhost:3000/goals")
+    fetch(`${import.meta.env.VITE_API_BASE}/goals`)
       .then((res) => res.json())
       .then((data) => setGoals(data))
       .catch((error) => console.log(error));
@@ -27,7 +27,7 @@ function App() {
   //  Delete goal
   const handleDeleteGoal = (id) => {
     // Delete from server
-    fetch(`http://localhost:3000/goals/${id}`, {
+    fetch(`${import.meta.env.VITE_API_BASE}/goals/${id}`, {
       method: "DELETE",
     })
       .then(() => {
@@ -40,7 +40,7 @@ function App() {
   // Update goal (for deposits)
   const handleUpdateGoal = (updatedGoal) => {
     // Update on server
-    fetch(`http://localhost:3000/goals/${updatedGoal.id}`, {
+    fetch(`${import.meta.env.VITE_API_BASE}/goals/${updatedGoal.id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedGoal),
