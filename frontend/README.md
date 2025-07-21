@@ -2,6 +2,13 @@
 
 A comprehensive savings goal tracking application built with React and Vite. Track your financial goals, monitor progress, make deposits, and visualize your savings journey with interactive charts.
 
+
+## 🚀 Live Demo
+
+Check out the deployed app here: [Smart Goal Planner Live](https://your-deployment-link.com)
+
+
+
 ## Features
 
 ###  Dashboard Overview
